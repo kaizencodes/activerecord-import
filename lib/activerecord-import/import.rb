@@ -720,7 +720,7 @@ class ActiveRecord::Base
 
       if options[:synchronize]
         sync_keys = options[:synchronize_keys] || Array(primary_key)
-        synchronize( options[:synchronize], sync_keys)
+        import_synchronize( options[:synchronize], sync_keys)
       end
       return_obj.num_inserts = 0 if return_obj.num_inserts.nil?
 

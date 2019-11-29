@@ -20,7 +20,7 @@ module ActiveRecord # :nodoc:
     # Post.synchronize posts, [:name] # queries on the :name column and not the :id column
     # posts.first.address # => "1245 Foo Ln" instead of whatever it was
     #
-    def self.synchronize(instances, keys = [primary_key])
+    def self.import_synchronize(instances, keys = [primary_key])
       return if instances.empty?
 
       conditions = {}
@@ -59,8 +59,8 @@ module ActiveRecord # :nodoc:
     end
 
     # See ActiveRecord::ConnectionAdapters::AbstractAdapter.synchronize
-    def synchronize(instances, key = [ActiveRecord::Base.primary_key])
-      self.class.synchronize(instances, key)
+    def import_synchronize(instances, key = [ActiveRecord::Base.primary_key])
+      self.class.import_synchronize(instances, key)
     end
   end
 end
